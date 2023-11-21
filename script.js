@@ -88,14 +88,12 @@ var specialCharacters = [
     'Z'
   ];
   
-  
-  
-  
-  specCharUser=0;
-  capCharUser=0;
-  lowCharUser=0;
-  numCharUser=0;
-  
+  let specCharUser=0;
+  let capCharUser=0;
+  let lowCharUser=0;
+  let numCharUser=0;
+  let passwordArray=[];
+  let password;
   
   
   // Function to prompt user for password options
@@ -109,7 +107,7 @@ var specialCharacters = [
       var hasCapital=confirm("Do you want to include capital letters?");
       if(hasCapital){
        var userPrompt=prompt(" How many capital letters would you like?");
-       specCharUser=parseInt(userPrompt);
+       capCharUser=parseInt(userPrompt);
       }
       var hasLowercase=confirm("Do you want to include lowercase letters?");
       if(hasLowercase){
@@ -129,16 +127,36 @@ var specialCharacters = [
   }
   
   getPasswordOptions()
+
   
   // Function for getting a random element from an array
   function getRandom(arr) {
-  
+    const random = (Math.floor(Math.random)*arr.lenght);
+    const char = arr[random];
+    return char;
   }
   
   // Function to generate password with user input
   function generatePassword() {
-  
+   for(i=0; i<specCharUser; i++){
+    passwordArray.push(getRandom(specialCharacters));
+   }
+
+   for(i=0; i<numCharUser; i++){
+    passwordArray.push(getRandom(numericCharacters));
+   }
+
+   for(i=0; i<lowCharUser; i++){
+    passwordArray.push(getRandom(lowerCasedCharacters));
+   }
+
+   for(i=0; i<capCharUser; i++){
+    passwordArray.push(getRandom(upperCasedCharacters));
+   }
+
+
   }
+
   
   // Get references to the #generate element
   var generateBtn = document.querySelector('#generate');
