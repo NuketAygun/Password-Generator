@@ -101,28 +101,27 @@ var specialCharacters = [
     var lenght= parseInt(prompt("Chosee the lenght of your Password: type a number between 8 and 128"));
       if(lenght < 8 || lenght > 128){
         alert("Chose a number between 8 and 128");
-        return
+    
       }
   
       var hasCapital=confirm("Do you want to include capital letters?");
       if(hasCapital){
-       var userPrompt=prompt(" How many capital letters would you like?");
-       capCharUser=parseInt(userPrompt);
+        capCharUser=parseInt(prompt(" How many capital letters would you like?"));
+       
       }
       var hasLowercase=confirm("Do you want to include lowercase letters?");
       if(hasLowercase){
-        var userPrompt=prompt(" How many lowercase letters would you like?");
-        lowCharUser=parseInt(userPrompt);
+        lowCharUser=parseInt(prompt(" How many lowercase letters would you like?"));
        }
+
       var specialCharacters=confirm("Do you want to include special characters letters?");
       if(specialCharacters){
-        var userPrompt=prompt(" How many special characters would you like?");
-        specCharUser=parseInt(userPrompt);
+        specCharUser=parseInt(prompt(" How many special characters would you like?"));
        }
+       
        var numberCharacters=confirm("Do you want to include special characters letters?");
       if(numberCharacters){
-        var userPrompt=prompt(" How many special characters would you like?");
-        numCharUser=parseInt(userPrompt);
+        numCharUser=parseInt(prompt(" How many special characters would you like?"));
        }
   }
   
@@ -154,6 +153,10 @@ var specialCharacters = [
     passwordArray.push(getRandom(upperCasedCharacters));
    }
 
+   passwordArray.sort(() => Math.random() - 0.5);
+   password = passwordArray.join("");
+
+   return password;
 
   }
 
